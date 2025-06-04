@@ -42,11 +42,18 @@ extern void * memcpy(void *, const void *, size_t);
 
 #define kv_resize(type, v, s) ((v).m = (s), (v).a = (type*)realloc((v).a, sizeof(type) * (v).m))
 
-#define kv_copy(type, v1, v0) do {							\
-		if ((v1).m < (v0).n) kv_resize(type, v1, (v0).n);	\
-		(v1).n = (v0).n;									\
-		memcpy((v1).a, (v0).a, sizeof(type) * (v0).n);		\
+#define kv_copy(type, vd, vs) do {							\
+		if ((vd).m < (vs).n) kv_resize(type, vd, (vs).n);	\
+		(vd).n = (vs).n;									\
+		memcpy((vd).a, (vs).a, sizeof(type) * (vs).n);		\
 	} while (0)												\
+
+
+#define kv_append(type, v1, v0) do {                                    \
+    if ((v1).m < (v1).n + (v0).n) kv_resize(type, v1, (v1).n + (v0).n); \
+    memcpy((v1).a + (v1).n, (v0).a, sizeof(type) * (v0).n);             \
+    (v1).n += (v0).n;                                                   \
+} while (0)
 
 #define kv_push(type, v, x) do {									\
 		if ((v).n == (v).m) {										\
