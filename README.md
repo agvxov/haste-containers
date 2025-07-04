@@ -1,13 +1,34 @@
 # kvec
 
-This repo contains a copy of kvec from [klib](https://github.com/attractivechaos/klib).
+This repo contains generic and typesafe C containers using macros.
+The syntax pattern is inspired by [klib](https://github.com/attractivechaos/klib)
+and is as follows:
+```c
+example_t(int) name;
+ex_dothing(name);
+```
 
-It only exists because there is no gentoo package for klib,
-I personally only utalize kvec on a regular basis
-and it is significantly easier to maintain an ebuild this way.
+Our datastructures have been optimized for:
+* speed on a single thread
+* programmer convenience
+They were **not** optimized for:
+* space
+* multihreading
 
-There is also klist, which is approximately like the original klist,
-except its not shit.
+## Contents
+### Kvec
+Klib's original kvec.
+It is a simple and fast vector.
+It never shrinks through its life-time.
+
+### Klist
+Approximately like the original klist, except its not shit.
+
 The original is a fragmented linked list which defines effectively the same operations as kvec.
+
 This version is a relative linked list which uses kvec as its underlying storage
 and defines removal and insertion.
+
+### Kstack
+Very trivial static stack.
+Slightly more readable then doing it by hand and prevents dumb off-by-one-errors.
