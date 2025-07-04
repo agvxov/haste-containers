@@ -29,6 +29,9 @@ The original is a fragmented linked list which defines effectively the same oper
 This version is a relative linked list which uses kvec as its underlying storage
 and defines removal and insertion.
 
+Removal only unlinks, it does not free any memory.
+Only destroying the list releases resources.
+
 ### Kstack
 Very trivial static stack.
 Slightly more readable then doing it by hand and prevents dumb off-by-one-errors.
