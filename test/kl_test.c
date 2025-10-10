@@ -11,10 +11,10 @@ signed main(void) {
     klist_t(int) l;
     kl_init(l);
 
-    kl_add(int, l, 1);
-    kl_add(int, l, 2);
-    kl_add(int, l, 3);
-    kl_add(int, l, 4);
+    kl_add(l, 1);
+    kl_add(l, 2);
+    kl_add(l, 3);
+    kl_add(l, 4);
 
     kl_remove(l, kl_next(l, kl_begin(l)));
 
