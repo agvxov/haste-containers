@@ -1,13 +1,19 @@
 # kvec
 
-This repo contains generic and typesafe C containers using macros.
-The syntax pattern is inspired by [klib](https://github.com/attractivechaos/klib)
-and is as follows:
+This repo contains generic and typesafe C23 containers.
+
+> [!NOTE] Out convenience, we compile under C++ too.
+
+Everything that is reasonable to be (or must be) is a macro.
+
+## Syntax
+The syntax pattern was inspired by [klib](https://github.com/attractivechaos/klib).
 ```c
 example_t(int) name;
 ex_dothing(name);
 ```
 
+## Usecase
 Our datastructures have been optimized for:
 * speed on a single thread
 * programmer convenience
@@ -16,22 +22,9 @@ They were **not** optimized for:
 * multihreading
 
 ## Contents
-### Kvec
-Klib's original kvec.
-It is a simple and fast vector.
-It never shrinks through its life-time.
+| lib    | Description |
+| :----- | :---------- |
+| kvec   | Simple and fast vector. It never shrinks through its life-time. |
+| klist  | Linked list which uses kvec as its underlying storage. Removal only unlinks, it does not free any memory. Only destroying the list releases resources. |
+| kstack | Trivial static stack. More readable then doing it by hand and prevents dumb off-by-one-errors. |
 
-### Klist
-Approximately like the original klist, except its not shit.
-
-The original is a fragmented linked list which defines effectively the same operations as kvec.
-
-This version is a relative linked list which uses kvec as its underlying storage
-and defines removal and insertion.
-
-Removal only unlinks, it does not free any memory.
-Only destroying the list releases resources.
-
-### Kstack
-Very trivial static stack.
-Slightly more readable then doing it by hand and prevents dumb off-by-one-errors.
