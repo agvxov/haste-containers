@@ -9,7 +9,7 @@ signed main(void) {
     kv_push(v, 2);
     kv_push(v, 4);
 
-    for (int i = 0; i < kv_size(v); i++) {
+    for (size_t i = 0; i < kv_size(v); i++) {
         printf("%d, ", kv_A(v, i));
     }
     puts("");

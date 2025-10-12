@@ -21,6 +21,6 @@ int main(void) {
 
     puts("");
 
-    destroy(h);
+    kh_destroy(h);
     return 0;
 }

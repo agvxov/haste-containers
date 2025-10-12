@@ -13,7 +13,7 @@ signed main(void) {
 
     puts("");
 
-    for (int i = 0; i < krb_size(b); i++) {
+    for (size_t i = 0; i < krb_size(b); i++) {
         printf("%d, ", krb_A(b, i));
     }
 
