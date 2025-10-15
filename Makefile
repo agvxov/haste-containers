@@ -12,7 +12,7 @@ test: \
 	test/kh_test-str-c.out test/kh_test-str-cpp.out
 
 %-c.out: %.c ${KHEADERS}
-	gcc -I./ -o $@ $< -std=c23 -Wall -ggdb -O0
+	gcc -I./ -o $@ $< -std=c23 -Wall -ggdb
 	./$@
 
 %-cpp.out: %.c ${KHEADERS}
