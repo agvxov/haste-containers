@@ -107,16 +107,16 @@ static inline void _kh_set_unused(int32_t * flag, int32_t i) { flag[i>>5] &= ~(1
 
 #define kh_init(h)    h.meta = (khmeta_t) { .bits = 0, .size = 0, .used = nullptr, .payloads = nullptr }
 #define kh_clear(h)   _kh_clear(&h.meta)
-#define kh_destroy(h) _kh_destroy(&h.meta)
+#define kh_delete(h)  _kh_destroy(&h.meta)
 
-#define kh_size(h)     ((h).meta->size)
-#define kh_capacity(h) ((h).meta.payloads ? 1U<<(h).meta.bits : 0U)
-#define kh_begin(h)    0
-#define kh_end(h)      (int32_t)kh_capacity(h)
+#define kh_size(h)    ((h).meta->size)
+#define kh_cap(h)     ((h).meta.payloads ? 1U<<(h).meta.bits : 0U)
+#define kh_begin(h)   0
+#define kh_end(h)     (int32_t)kh_cap(h)
 
 #define kh_key(h, x) (( (typeof((h).type_guard)*)((h).meta.payloads) )[x].key_type_guard)
 #define kh_val(h, x) (( (typeof((h).type_guard)*)((h).meta.payloads) )[x].value_type_guard)
-#define kh_A(h, k)    ( (typeof((h).type_guard)*)_kh_A(&h.meta, _type_check_key(h, k), sizeof(h.type_guard), hash_generic(k), eq_generic(k)) )->value_type_guard
+#define kh_a(h, k)    ( (typeof((h).type_guard)*)_kh_a(&h.meta, _type_check_key(h, k), sizeof(h.type_guard), hash_generic(k), eq_generic(k)) )->value_type_guard
 
 #define kh_get(h, k)        _kh_get(&h.meta, _type_check_key(h, k), sizeof(h.type_guard), hash_generic(k), eq_generic(k))
 #define kh_ensure_key(h, v) _kh_ensure_key(&h.meta, _type_check_val(h, v), sizeof(h.type_guard), hash_generic(k), eq_generic(k))
@@ -353,7 +353,7 @@ int32_t _kh_ensure_key(khmeta_t *h, const void * key, int payload_size, hash_fn_
 }
 
 SCOPE
-void * _kh_A(khmeta_t * h, const void * key, int payload_size, hash_fn_t hash_fn, bool_fn_t eq) {
+void * _kh_a(khmeta_t * h, const void * key, int payload_size, hash_fn_t hash_fn, bool_fn_t eq) {
     register int i = _kh_ensure_key(h, key, payload_size, hash_fn, eq);
     return h->payloads + i*payload_size;
 }

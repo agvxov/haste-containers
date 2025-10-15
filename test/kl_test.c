@@ -23,7 +23,7 @@ signed main(void) {
     }
     puts("");
 
-    kl_destroy(l);
+    kl_delete(l);
 
     return 0;
 }
