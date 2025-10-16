@@ -7,7 +7,7 @@
 Every container is a template type like macro, with an interface resembling the following:
 ```c
 example_t(int) e;               // declare
-e = ex_null;                    // initialize
+ex_init(e);                     // initialize
 ex_dothing(e);                  // perform action
 ex_A(e, 1) = 1;                 // perform unsafe access (may over index)
 ex_a(e, 1) = 1;                 // perform safe access (may trigger resize)
