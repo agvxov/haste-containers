@@ -1,4 +1,3 @@
-// @BAKE gcc -o $*.out $@ -std=c23 -ggdb
 #include <stdio.h>
 #include "khash.h"
 

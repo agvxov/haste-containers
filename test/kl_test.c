@@ -1,9 +1,3 @@
-/* @BAKE
-    gcc -o $*-c.out   $@ -std=c23
-    g++ -o $*-cxx.out $@ -std=c++23
-   @STOP
- */
-
 #include <stdio.h>
 #include "klist.h"
 
