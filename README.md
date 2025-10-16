@@ -15,7 +15,7 @@ ex_foreach(auto i, e) { ; }     // iterate
 /* dynamic container only */
 ex_size(e);         // get number of elements
 ex_add(e, 2)        // append element
-ex_resize(e, 10);   // pre-allocate to 10 elements
+ex_resize(e, 10);   // pre-allocate for elements
 ex_delete(e);       // release memory
 ```
 
@@ -39,6 +39,7 @@ hm_a(my_hashmap, "HW") = "one"; // NOT OK
 Our datastructures have been optimized for:
 * programmer convenience
 * speed on a single thread
+
 They were **not** optimized for:
 * space
 * multihreading
