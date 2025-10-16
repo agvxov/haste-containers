@@ -1,7 +1,8 @@
 # Haste containers
 > Family of generic and typesafe C23 containers.
 
-> [!NOTE] Out of convenience, we compile under C++ too.
+> [!NOTE]
+> Out of convenience, we compile under C++ too.
 
 ## Syntax
 Every container is a template type like macro, with an interface resembling the following:
@@ -33,7 +34,8 @@ hm_a(my_hashmap, "HW") = "one"; // NOT OK
  */
 ```
 
-> [!TIP] Consult the headers and tests for more examples.
+> [!TIP]
+> Consult the headers and tests for more examples.
 
 ## Usecase
 Our datastructures have been optimized for:
